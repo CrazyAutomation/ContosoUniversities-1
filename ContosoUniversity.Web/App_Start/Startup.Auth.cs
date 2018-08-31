@@ -5,7 +5,7 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using ContosoUniversity.Web.Models;
+using ContosoUniversity.Web.Identity;
 
 namespace ContosoUniversity.Web
 {
