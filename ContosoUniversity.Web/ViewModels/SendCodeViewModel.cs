@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
 
-namespace ContosoUniversity.Web.Models
+namespace ContosoUniversity.Web.ViewModels
 {
     public class SendCodeViewModel
     {
