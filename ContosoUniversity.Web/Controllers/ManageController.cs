@@ -14,40 +14,38 @@ namespace ContosoUniversity.Web.Controllers
     [Authorize]
     public class ManageController : Controller
     {
-        private ApplicationSignInManager _signInManager;
-        private ApplicationUserManager _userManager;
+        private readonly ApplicationSignInManager _signInManager;
+        private readonly ApplicationUserManager _userManager;
 
-        public ManageController()
+        public ManageController() { }
+
+        public ManageController(ApplicationSignInManager signInManager, ApplicationUserManager userManager)
         {
+            _signInManager = signInManager;
+            _userManager = userManager;
         }
 
-        public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
-        {
-            UserManager = userManager;
-            SignInManager = signInManager;
-        }
-
-        public ApplicationSignInManager SignInManager
+        private ApplicationSignInManager SignInManager
         {
             get
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
-            }
         }
 
-        public ApplicationUserManager UserManager
+        private ApplicationUserManager UserManager
         {
             get
             {
                 return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
             }
-            private set
+        }
+
+        private IAuthenticationManager AuthenticationManager
+        {
+            get
             {
-                _userManager = value;
+                return HttpContext.GetOwinContext().Authentication;
             }
         }
 
@@ -328,7 +326,6 @@ namespace ContosoUniversity.Web.Controllers
             if (disposing && _userManager != null)
             {
                 _userManager.Dispose();
-                _userManager = null;
             }
 
             base.Dispose(disposing);
@@ -337,14 +334,6 @@ namespace ContosoUniversity.Web.Controllers
 #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
-
-        private IAuthenticationManager AuthenticationManager
-        {
-            get
-            {
-                return HttpContext.GetOwinContext().Authentication;
-            }
-        }
 
         private void AddErrors(IdentityResult result)
         {
