@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using ContosoUniversity.Web.Identity;
+using ContosoUniversity.Web.Models;
 using ContosoUniversity.Web.ViewModels;
 
 namespace ContosoUniversity.Web.Controllers

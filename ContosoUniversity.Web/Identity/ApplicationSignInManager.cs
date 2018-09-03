@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
+using ContosoUniversity.Web.Models;
 
 namespace ContosoUniversity.Web.Identity
 {
@@ -10,7 +11,8 @@ namespace ContosoUniversity.Web.Identity
     public class ApplicationSignInManager : SignInManager<ApplicationUser, string>
     {
         private ApplicationSignInManager(ApplicationUserManager userManager,
-            IAuthenticationManager authenticationManager) : base(userManager, authenticationManager)
+            IAuthenticationManager authenticationManager) 
+            : base(userManager, authenticationManager)
         {
         }
 

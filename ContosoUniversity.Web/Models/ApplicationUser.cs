@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace ContosoUniversity.Web.Identity
+namespace ContosoUniversity.Web.Models
 {
     public class ApplicationUser : IdentityUser
     {

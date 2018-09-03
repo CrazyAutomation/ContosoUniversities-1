@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
+﻿using ContosoUniversity.Web.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace ContosoUniversity.Web.Identity
+namespace ContosoUniversity.Web.DataContext
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext()
+        private ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
