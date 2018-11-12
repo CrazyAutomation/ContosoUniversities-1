@@ -5,8 +5,8 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
 using ContosoUniversity.Web.Identity;
-using ContosoUniversity.Web.DataContext;
 using ContosoUniversity.Web.Models;
+using ContosoUniversity.Web.DataContexts;
 
 namespace ContosoUniversity.Web
 {

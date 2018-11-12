@@ -1,7 +1,7 @@
 ﻿using ContosoUniversity.Web.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace ContosoUniversity.Web.DataContext
+namespace ContosoUniversity.Web.DataContexts
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {

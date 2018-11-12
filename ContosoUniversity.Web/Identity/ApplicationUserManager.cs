@@ -3,8 +3,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
-using ContosoUniversity.Web.DataContext;
 using ContosoUniversity.Web.Models;
+using ContosoUniversity.Web.DataContexts;
 
 namespace ContosoUniversity.Web.Identity
 {
