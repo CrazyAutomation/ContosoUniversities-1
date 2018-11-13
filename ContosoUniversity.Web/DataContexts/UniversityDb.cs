@@ -1,9 +1,10 @@
-﻿using ContosoUniversity.Entities;
-using System.Data.Entity;
+﻿using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
+using ContosoUniversity.Entities;
 
 namespace ContosoUniversity.Web.DataContexts
 {
-    public class UniversityDb
+    public class UniversityDb : DbContext
     {
         public UniversityDb() { }
 
@@ -12,5 +13,13 @@ namespace ContosoUniversity.Web.DataContexts
         public DbSet<Course> Courses { get; set; }
 
         public DbSet<Enrollment> Enrollments { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            modelBuilder.HasDefaultSchema("University");
+        }
     }
 }
