@@ -5,7 +5,7 @@ namespace ContosoUniversity.Web.DataContexts
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        private ApplicationDbContext()
+        public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
