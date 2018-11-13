@@ -3,9 +3,9 @@ using System.Data.Entity;
 
 namespace ContosoUniversity.Web.DataContexts
 {
-    public class UniversityDbContext
+    public class UniversityDb
     {
-        public UniversityDbContext() { }
+        public UniversityDb() { }
 
         public DbSet<Student> Students { get; set; }
 
