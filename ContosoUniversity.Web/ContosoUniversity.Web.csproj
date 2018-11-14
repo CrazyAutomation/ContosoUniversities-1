@@ -168,6 +168,7 @@
     <Compile Include="DataContexts\IdentityDb.cs" />
     <Compile Include="DataContexts\IdentityMigrations\Configuration.cs" />
     <Compile Include="DataContexts\UniversityDb.cs" />
+    <Compile Include="DataContexts\UniversityMigrations\Configuration.cs" />
     <Compile Include="Identity\ApplicationSignInManager.cs" />
     <Compile Include="Identity\ApplicationUserManager.cs" />
     <Compile Include="Identity\EmailService.cs" />
