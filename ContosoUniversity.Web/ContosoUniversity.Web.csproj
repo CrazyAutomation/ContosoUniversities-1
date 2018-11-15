@@ -166,6 +166,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="DataContexts\IdentityDb.cs" />
+    <Compile Include="DataContexts\IdentityMigrations\201811151925073_InitialCreate.cs" />
+    <Compile Include="DataContexts\IdentityMigrations\201811151925073_InitialCreate.Designer.cs">
+      <DependentUpon>201811151925073_InitialCreate.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataContexts\IdentityMigrations\Configuration.cs" />
     <Compile Include="DataContexts\UniversityDb.cs" />
     <Compile Include="DataContexts\UniversityMigrations\Configuration.cs" />
@@ -267,6 +271,11 @@
       <Project>{0D6B9E5E-9F5F-4E1C-BC99-C608486D06C5}</Project>
       <Name>ContosoUniversity.Entities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DataContexts\IdentityMigrations\201811151925073_InitialCreate.resx">
+      <DependentUpon>201811151925073_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
