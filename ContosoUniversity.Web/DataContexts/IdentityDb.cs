@@ -18,15 +18,13 @@ namespace ContosoUniversity.Web.DataContexts
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.HasDefaultSchema("Identity");
-
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
-            modelBuilder.Entity<ApplicationUser>().ToTable("AspNetUser");
-            modelBuilder.Entity<IdentityRole>().ToTable("AspNetRole");
-            modelBuilder.Entity<IdentityUserLogin>().ToTable("AspNetUserLogin");
-            modelBuilder.Entity<IdentityUserRole>().ToTable("AspNetUserRole");
-            modelBuilder.Entity<IdentityUserClaim>().ToTable("AspNetUserClaim");
+            modelBuilder.Entity<ApplicationUser>().ToTable("AspNetUser", "Identity");
+            modelBuilder.Entity<IdentityRole>().ToTable("AspNetRole", "Identity");
+            modelBuilder.Entity<IdentityUserLogin>().ToTable("AspNetUserLogin", "Identity");
+            modelBuilder.Entity<IdentityUserRole>().ToTable("AspNetUserRole", "Identity");
+            modelBuilder.Entity<IdentityUserClaim>().ToTable("AspNetUserClaim", "Identity");
         }
     }
 }

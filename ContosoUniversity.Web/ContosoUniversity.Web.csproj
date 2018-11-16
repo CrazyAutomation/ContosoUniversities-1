@@ -166,9 +166,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="DataContexts\IdentityDb.cs" />
-    <Compile Include="DataContexts\IdentityMigrations\201811142203593_InitialCreate.cs" />
-    <Compile Include="DataContexts\IdentityMigrations\201811142203593_InitialCreate.Designer.cs">
-      <DependentUpon>201811142203593_InitialCreate.cs</DependentUpon>
+    <Compile Include="DataContexts\IdentityMigrations\201811151925073_InitialCreate.cs" />
+    <Compile Include="DataContexts\IdentityMigrations\201811151925073_InitialCreate.Designer.cs">
+      <DependentUpon>201811151925073_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="DataContexts\IdentityMigrations\Configuration.cs" />
     <Compile Include="DataContexts\UniversityDb.cs" />
@@ -273,8 +273,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="DataContexts\IdentityMigrations\201811142203593_InitialCreate.resx">
-      <DependentUpon>201811142203593_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="DataContexts\IdentityMigrations\201811151925073_InitialCreate.resx">
+      <DependentUpon>201811151925073_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
