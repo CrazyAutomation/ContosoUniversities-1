@@ -2,6 +2,12 @@
 {
     public class Enrollment
     {
+        public Enrollment()
+        {
+            Course = new Course();
+            Student = new Student();
+        }
+
         public int EnrollmentId { get; set; }
 
         public int CourseId { get; set; }
