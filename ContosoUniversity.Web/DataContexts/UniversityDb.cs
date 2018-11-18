@@ -1,12 +1,13 @@
 ﻿using System.Data.Entity;
-using System.Data.Entity.ModelConfiguration.Conventions;
 using ContosoUniversity.Entities;
 
 namespace ContosoUniversity.Web.DataContexts
 {
     public class UniversityDb : DbContext
     {
-        public UniversityDb() { }
+        public UniversityDb() : base(nameOrConnectionString: "DefaultConnection")
+        {
+        }
 
         public DbSet<Student> Students { get; set; }
 
@@ -18,9 +19,9 @@ namespace ContosoUniversity.Web.DataContexts
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.HasDefaultSchema("University");
-
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            modelBuilder.Entity<Student>().ToTable("Student", "University");
+            modelBuilder.Entity<Course>().ToTable("Course", "University");
+            modelBuilder.Entity<Enrollment>().ToTable("Enrollment", "University");
         }
     }
 }
