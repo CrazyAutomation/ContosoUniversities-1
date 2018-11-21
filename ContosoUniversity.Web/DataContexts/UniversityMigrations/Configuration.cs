@@ -28,21 +28,21 @@ namespace ContosoUniversity.Web.DataContexts.UniversityMigrations
                 new Student {FirstName = "Nino", LastName = "Olivetto", EnrollmentDate = DateTime.Parse("2015-09-01")}
             };
 
-            students.ForEach(s => context.Students.Add(s));
+            students.ForEach(s => context.Students.AddOrUpdate(r => new {r.FirstName, r.LastName}, s));
             context.SaveChanges();
 
             var courses = new List<Course>
             {
-                new Course {Code = 1050, Title = "Chemistry", Credits = 3,},
-                new Course {Code = 4022, Title = "Microeconomics", Credits = 3,},
-                new Course {Code = 4041, Title = "Macroeconomics", Credits = 3,},
-                new Course {Code = 1045, Title = "Calculus", Credits = 4,},
-                new Course {Code = 3141, Title = "Trigonometry", Credits = 4,},
-                new Course {Code = 2021, Title = "Composition", Credits = 3,},
-                new Course {Code = 2042, Title = "Literature", Credits = 4,}
+                new Course {Code = 1050, Title = "Chemistry", Credits = 3},
+                new Course {Code = 4022, Title = "Microeconomics", Credits = 3},
+                new Course {Code = 4041, Title = "Macroeconomics", Credits = 3},
+                new Course {Code = 1045, Title = "Calculus", Credits = 4},
+                new Course {Code = 3141, Title = "Trigonometry", Credits = 4},
+                new Course {Code = 2021, Title = "Composition", Credits = 3},
+                new Course {Code = 2042, Title = "Literature", Credits = 4}
             };
 
-            courses.ForEach(s => context.Courses.Add(s));
+            courses.ForEach(s => context.Courses.AddOrUpdate(r => new {r.Code, r.Title}, s));
             context.SaveChanges();
 
             var enrollments = new List<Enrollment>
@@ -58,10 +58,10 @@ namespace ContosoUniversity.Web.DataContexts.UniversityMigrations
                 new Enrollment {StudentId = 4, CourseId = 2, Grade = "F"},
                 new Enrollment {StudentId = 5, CourseId = 3, Grade = "C"},
                 new Enrollment {StudentId = 6, CourseId = 4},
-                new Enrollment {StudentId = 7, CourseId = 5, Grade = "A"},
+                new Enrollment {StudentId = 7, CourseId = 5, Grade = "A"}
             };
 
-            enrollments.ForEach(s => context.Enrollments.Add(s));
+            enrollments.ForEach(s => context.Enrollments.AddOrUpdate(r => new {r.StudentId, r.CourseId}, s));
             context.SaveChanges();
         }
     }
