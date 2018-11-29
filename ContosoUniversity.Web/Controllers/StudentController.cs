@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using ContosoUniversity.Entities;
 using ContosoUniversity.Web.DataContexts;
@@ -28,11 +24,16 @@ namespace ContosoUniversity.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Student student = db.Students.Find(id);
+
+            var student = db.Students
+                .Include(e => e.Enrollments.Select(c => c.Course))
+                .FirstOrDefault(s => s.StudentId == id);
+
             if (student == null)
             {
                 return HttpNotFound();
             }
+
             return View(student);
         }
 
