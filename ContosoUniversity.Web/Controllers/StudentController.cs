@@ -83,13 +83,15 @@ namespace ContosoUniversity.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "StudentId,FirstName,LastName,EnrollmentDate")] Student student)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                db.Entry(student).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                return View(student);
             }
-            return View(student);
+
+            db.Entry(student).State = EntityState.Modified;
+            db.SaveChanges();
+            
+            return RedirectToAction("Index");
         }
 
         // GET: Student/Delete/5
