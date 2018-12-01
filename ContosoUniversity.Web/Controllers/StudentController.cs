@@ -48,16 +48,17 @@ namespace ContosoUniversity.Web.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "StudentId,FirstName,LastName,EnrollmentDate")] Student student)
+        public ActionResult Create([Bind(Include = "FirstName,LastName,EnrollmentDate")] Student student)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                db.Students.Add(student);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                return View(student);
             }
-
-            return View(student);
+            
+            db.Students.Add(student);
+            db.SaveChanges();
+            
+            return RedirectToAction("Index");
         }
 
         // GET: Student/Edit/5
