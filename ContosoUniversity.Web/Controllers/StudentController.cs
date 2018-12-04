@@ -104,11 +104,14 @@ namespace ContosoUniversity.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Student student = db.Students.Find(id);
+
+            var student = db.Students.Find(id);
+            
             if (student == null)
             {
                 return HttpNotFound();
             }
+
             return View(student);
         }
 
