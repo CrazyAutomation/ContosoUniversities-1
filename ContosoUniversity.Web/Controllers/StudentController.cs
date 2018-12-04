@@ -120,9 +120,16 @@ namespace ContosoUniversity.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Student student = db.Students.Find(id);
+            var student = db.Students.Find(id);
+
+            if (student == null)
+            {
+                return HttpNotFound();
+            }
+
             db.Students.Remove(student);
             db.SaveChanges();
+
             return RedirectToAction("Index");
         }
 
