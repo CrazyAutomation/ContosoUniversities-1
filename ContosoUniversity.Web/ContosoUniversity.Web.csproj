@@ -173,9 +173,9 @@
     </Compile>
     <Compile Include="DataContexts\IdentityMigrations\Configuration.cs" />
     <Compile Include="DataContexts\UniversityDb.cs" />
-    <Compile Include="DataContexts\UniversityMigrations\201811162233576_InitialCreate.cs" />
-    <Compile Include="DataContexts\UniversityMigrations\201811162233576_InitialCreate.Designer.cs">
-      <DependentUpon>201811162233576_InitialCreate.cs</DependentUpon>
+    <Compile Include="DataContexts\UniversityMigrations\201902140032433_InitialCreate.cs" />
+    <Compile Include="DataContexts\UniversityMigrations\201902140032433_InitialCreate.Designer.cs">
+      <DependentUpon>201902140032433_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="DataContexts\UniversityMigrations\Configuration.cs" />
     <Compile Include="Identity\ApplicationSignInManager.cs" />
@@ -286,8 +286,8 @@
     <EmbeddedResource Include="DataContexts\IdentityMigrations\201811151925073_InitialCreate.resx">
       <DependentUpon>201811151925073_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DataContexts\UniversityMigrations\201811162233576_InitialCreate.resx">
-      <DependentUpon>201811162233576_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="DataContexts\UniversityMigrations\201902140032433_InitialCreate.resx">
+      <DependentUpon>201902140032433_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using ContosoUniversity.Entities;
 
 namespace ContosoUniversity.Web.DataContexts
@@ -19,9 +20,7 @@ namespace ContosoUniversity.Web.DataContexts
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Student>().ToTable("Student", "University");
-            modelBuilder.Entity<Course>().ToTable("Course", "University");
-            modelBuilder.Entity<Enrollment>().ToTable("Enrollment", "University");
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
     }
 }

@@ -8,7 +8,7 @@ namespace ContosoUniversity.Web.DataContexts.UniversityMigrations
         public override void Up()
         {
             CreateTable(
-                "University.Course",
+                "dbo.Course",
                 c => new
                     {
                         CourseId = c.Int(nullable: false, identity: true),
@@ -19,22 +19,22 @@ namespace ContosoUniversity.Web.DataContexts.UniversityMigrations
                 .PrimaryKey(t => t.CourseId);
             
             CreateTable(
-                "University.Enrollment",
+                "dbo.Enrollment",
                 c => new
                     {
                         EnrollmentId = c.Int(nullable: false, identity: true),
                         CourseId = c.Int(nullable: false),
                         StudentId = c.Int(nullable: false),
-                        Grade = c.String(),
+                        Grade = c.String(maxLength: 1),
                     })
                 .PrimaryKey(t => t.EnrollmentId)
-                .ForeignKey("University.Course", t => t.CourseId, cascadeDelete: true)
-                .ForeignKey("University.Student", t => t.StudentId, cascadeDelete: true)
+                .ForeignKey("dbo.Course", t => t.CourseId, cascadeDelete: true)
+                .ForeignKey("dbo.Student", t => t.StudentId, cascadeDelete: true)
                 .Index(t => t.CourseId)
                 .Index(t => t.StudentId);
             
             CreateTable(
-                "University.Student",
+                "dbo.Student",
                 c => new
                     {
                         StudentId = c.Int(nullable: false, identity: true),
@@ -48,13 +48,13 @@ namespace ContosoUniversity.Web.DataContexts.UniversityMigrations
         
         public override void Down()
         {
-            DropForeignKey("University.Enrollment", "StudentId", "University.Student");
-            DropForeignKey("University.Enrollment", "CourseId", "University.Course");
-            DropIndex("University.Enrollment", new[] { "StudentId" });
-            DropIndex("University.Enrollment", new[] { "CourseId" });
-            DropTable("University.Student");
-            DropTable("University.Enrollment");
-            DropTable("University.Course");
+            DropForeignKey("dbo.Enrollment", "StudentId", "dbo.Student");
+            DropForeignKey("dbo.Enrollment", "CourseId", "dbo.Course");
+            DropIndex("dbo.Enrollment", new[] { "StudentId" });
+            DropIndex("dbo.Enrollment", new[] { "CourseId" });
+            DropTable("dbo.Student");
+            DropTable("dbo.Enrollment");
+            DropTable("dbo.Course");
         }
     }
 }
