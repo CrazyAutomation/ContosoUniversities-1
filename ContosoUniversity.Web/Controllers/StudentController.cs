@@ -9,12 +9,12 @@ namespace ContosoUniversity.Web.Controllers
 {
     public class StudentController : Controller
     {
-        private UniversityDb db = new UniversityDb();
+        private readonly UniversityDb _universityDb = new UniversityDb();
 
         // GET: Student
         public ActionResult Index()
         {
-            return View(db.Students.ToList());
+            return View(_universityDb.Students.ToList());
         }
 
         // GET: Student/Details/5
@@ -25,7 +25,7 @@ namespace ContosoUniversity.Web.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var student = db.Students
+            var student = _universityDb.Students
                 .Include(e => e.Enrollments.Select(c => c.Course))
                 .FirstOrDefault(s => s.StudentId == id);
 
@@ -54,10 +54,10 @@ namespace ContosoUniversity.Web.Controllers
             {
                 return View(student);
             }
-            
-            db.Students.Add(student);
-            db.SaveChanges();
-            
+
+            _universityDb.Students.Add(student);
+            _universityDb.SaveChanges();
+
             return RedirectToAction("Index");
         }
 
@@ -69,8 +69,8 @@ namespace ContosoUniversity.Web.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var student = db.Students.Find(id);
-            
+            var student = _universityDb.Students.Find(id);
+
             if (student == null)
             {
                 return HttpNotFound();
@@ -80,7 +80,7 @@ namespace ContosoUniversity.Web.Controllers
         }
 
         // POST: Student/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for    
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -91,9 +91,9 @@ namespace ContosoUniversity.Web.Controllers
                 return View(student);
             }
 
-            db.Entry(student).State = EntityState.Modified;
-            db.SaveChanges();
-            
+            _universityDb.Entry(student).State = EntityState.Modified;
+            _universityDb.SaveChanges();
+
             return RedirectToAction("Index");
         }
 
@@ -105,8 +105,8 @@ namespace ContosoUniversity.Web.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var student = db.Students.Find(id);
-            
+            var student = _universityDb.Students.Find(id);
+
             if (student == null)
             {
                 return HttpNotFound();
@@ -120,15 +120,15 @@ namespace ContosoUniversity.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            var student = db.Students.Find(id);
+            var student = _universityDb.Students.Find(id);
 
             if (student == null)
             {
                 return HttpNotFound();
             }
 
-            db.Students.Remove(student);
-            db.SaveChanges();
+            _universityDb.Students.Remove(student);
+            _universityDb.SaveChanges();
 
             return RedirectToAction("Index");
         }
@@ -137,8 +137,9 @@ namespace ContosoUniversity.Web.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                _universityDb.Dispose();
             }
+
             base.Dispose(disposing);
         }
     }
