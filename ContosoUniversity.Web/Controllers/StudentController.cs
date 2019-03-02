@@ -9,7 +9,12 @@ namespace ContosoUniversity.Web.Controllers
 {
     public class StudentController : Controller
     {
-        private readonly UniversityDb _universityDb = new UniversityDb();
+        private readonly UniversityDb _universityDb;
+
+        public StudentController()
+        {
+            _universityDb = new UniversityDb();
+        }
 
         // GET: Student
         public ActionResult Index()
