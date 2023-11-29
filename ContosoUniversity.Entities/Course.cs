@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ContosoUniversity.Entities
 {
@@ -22,5 +23,7 @@ namespace ContosoUniversity.Entities
 
 
         public ICollection<Enrollment> Enrollments { get; set; }
+
+        //public virtual ICollection<Instructor> Instructors { get; set; }
     }
 }

@@ -1,12 +1,17 @@
-﻿using System.Web.Mvc;
+﻿//using ContosoUniversity.Web.DAL;
+using ContosoUniversity.Web.DataContexts;
+using System.Web.Mvc;
 
 namespace ContosoUniversity.Web.Controllers
 {
     public class HomeController : Controller
     {
+       // private SchoolContext db = new SchoolContext();
+
+
         public ActionResult Index()
         {
-            return View();
+           return View();
         }
 
         public ActionResult About()
@@ -18,6 +23,7 @@ namespace ContosoUniversity.Web.Controllers
 
         public ActionResult Contact()
         {
+           
             ViewBag.Message = "Your contact page.";
 
             return View();

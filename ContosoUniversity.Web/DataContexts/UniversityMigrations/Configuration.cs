@@ -1,7 +1,7 @@
-using System;
+/* using System;
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
-using ContosoUniversity.Entities;
+using ContosoUniversity.Web.Models;
 
 namespace ContosoUniversity.Web.DataContexts.UniversityMigrations
 {
@@ -66,3 +66,4 @@ namespace ContosoUniversity.Web.DataContexts.UniversityMigrations
         }
     }
 }
+*/

@@ -1,4 +1,4 @@
-using System.Data.Entity.Migrations;
+/* using System.Data.Entity.Migrations;
 
 namespace ContosoUniversity.Web.DataContexts.IdentityMigrations
 {
@@ -27,3 +27,4 @@ namespace ContosoUniversity.Web.DataContexts.IdentityMigrations
         }
     }
 }
+*/
