@@ -1,13 +1,15 @@
-﻿//using ContosoUniversity.Web.DAL;
+﻿using ContosoUniversity.Web.DAL;
 using ContosoUniversity.Web.DataContexts;
+using ContosoUniversity.Web.ViewModels;
+using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace ContosoUniversity.Web.Controllers
 {
     public class HomeController : Controller
     {
-       // private SchoolContext db = new SchoolContext();
-
+        private CUContext db = new CUContext();
 
         public ActionResult Index()
         {
@@ -16,17 +18,35 @@ namespace ContosoUniversity.Web.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            // Commenting out LINQ to show how to do the same thing in SQL.
+            //IQueryable<EnrollmentDateGroup> = from student in db.Students
+            //           group student by student.EnrollmentDate into dateGroup
+            //           select new EnrollmentDateGroup()
+            //           {
+            //               EnrollmentDate = dateGroup.Key,
+            //               StudentCount = dateGroup.Count()
+            //           };
 
-            return View();
+            // SQL version of the above LINQ code.
+            string query = "SELECT EnrollmentDate, COUNT(*) AS StudentCount "
+                + "FROM Person "
+                + "WHERE Discriminator = 'Student' "
+                + "GROUP BY EnrollmentDate";
+            IEnumerable<EnrollmentDateGroup> data = db.Database.SqlQuery<EnrollmentDateGroup>(query);
+
+            return View(data.ToList());
         }
 
         public ActionResult Contact()
         {
-           
             ViewBag.Message = "Your contact page.";
-
             return View();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            db.Dispose();
+            base.Dispose(disposing);
         }
     }
 }
